@@ -2,11 +2,17 @@ import Head from "next/head";
 import styles from "./Layout.module.scss";
 import utilStyles from "/styles/utils.module.css";
 import Link from "next/link";
-import ProfileImage from "/components/ProfileImage/ProfileImage";
+import ProfileImage from "../ProfileImage/ProfileImage";
+import { FC, ReactNode } from "react";
 const name = "Andrii";
 export const siteTitle = "Next.js Sample Website";
 
-export default function Layout({ children, home }) {
+interface ILayout {
+  children: ReactNode;
+  home?: boolean;
+}
+
+const Layout: FC<ILayout> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -66,4 +72,6 @@ export default function Layout({ children, home }) {
       )}
     </div>
   );
-}
+};
+
+export default Layout;
